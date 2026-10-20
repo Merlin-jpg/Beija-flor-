@@ -1,5 +1,5 @@
 #chamar método de abstração
-from abc import ABC, abstracmethod
+from abc import ABC, abstractmethod
 
 class Veiculo(ABC):
   def __init__(self,placa, modelo):
