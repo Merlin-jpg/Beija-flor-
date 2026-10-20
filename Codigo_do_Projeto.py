@@ -34,6 +34,11 @@ class Carro(Veiculo):
       
     def cadastro_modelo(self):
       self.modelo = input('digite o modelo do carro: ')
+
+    def calcular_custo(self):
+      custo_medio = 0,55
+      km_percorrido = input('quantos quilômetros você percoreu? ')
+      custo_total = (km_percorrido / custo_medio) * 6,54
       
 class Caminhao(Veiculo):
   def cadastro_placa(self):
@@ -42,4 +47,7 @@ class Caminhao(Veiculo):
   def cadastro_modelo(self):
     self.modelo = input('digite o modelo do caminhão: ')
 
-  
+      def calcular_custo(self):
+      custo_medio = 1,22
+      km_percorrido = input('quantos quilômetros você percoreu? ')
+      custo_total = (km_percorrido / custo_medio) * 6,54
