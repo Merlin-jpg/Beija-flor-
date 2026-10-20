@@ -9,21 +9,28 @@ class Veiculo(ABC):
   @property
   def placa(self):
     return self.__placa
-
   @property
   def modelo(self):
     return self.__modelo
+
+  @placa.setter
+  def placa(self, p):
+    self.__placa = p
+  @modelo.setter
+  def modelo(self, m):
+    self.__modelo = m
   
+  @abstractmethod
   def cadastro_placa(self):
     pass
-    
+  @abstractmethod
   def cadastro_modelo(self):
     pass
   
   
 class Carro(Veiculo):
-
-  
+    def cadastro_placa(self):
+      
 class Caminhao(Veiculo):
 
   
