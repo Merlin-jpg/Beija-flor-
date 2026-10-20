@@ -30,8 +30,10 @@ class Veiculo(ABC):
   
 class Carro(Veiculo):
     def cadastro_placa(self):
+      self.placa = input('digite a placa do carro: ')
       
     def cadastro_modelo(self):
+      self.modelo = input('digite o modelo do carro: ')
       
 class Caminhao(Veiculo):
   def cadastro_placa(self):
