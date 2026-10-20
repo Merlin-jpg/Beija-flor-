@@ -31,6 +31,9 @@ class Veiculo(ABC):
 class Carro(Veiculo):
     def cadastro_placa(self):
       
+      
 class Caminhao(Veiculo):
+  def cadastro_placa(self):
+    self.placa = input('digite a placa do seu caminhão: ')
 
   
