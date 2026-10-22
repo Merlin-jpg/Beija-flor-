@@ -51,3 +51,20 @@ class Caminhao(Veiculo):
       custo_medio = 1,22
       km_percorrido = input('quantos quilômetros você percoreu? ')
       custo_total = (km_percorrido / custo_medio) * 6,54
+
+class Motorista:
+  def __init__(self):
+    self.nome = ''
+
+class CadastrarMotorista:
+  def __init__(self):
+    self.informacoes = []
+
+  def cadastrar(self):
+    self.informacoes.append(Motorista)
+
+    if motorista.nome == isalpha:
+      print(f'{motorista.nome} cadastrado com sucesso')
+
+    else:
+      print('cadastro falho')
