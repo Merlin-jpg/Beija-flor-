@@ -58,14 +58,14 @@ class Motorista:
   def nome(self):
     self.nome = input('digite seu nome: ')
 
-class CadastrarMotorista:
+class CadastroGeral(Veiculo):
   def __init__(self):
-    self.informacoes = []
-
-  def cadastrar(self):
-    self.informacoes.append(Motorista)
-
-    if motorista.nome == isalpha:
+    self.placas_carros = []
+    self.placas_caminhoes = []
+    
+  def cadastrar_placas(self):
+    
+    if tipo_veiculo == isalpha:
       print(f'{motorista.nome} cadastrado com sucesso')
 
     else:
