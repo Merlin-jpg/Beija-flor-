@@ -63,10 +63,14 @@ class CadastroGeral(Veiculo):
     self.placas_carros = []
     self.placas_caminhoes = []
     
-  def cadastrar_placas(self):
-    
-    if tipo_veiculo == isalpha:
-      print(f'{motorista.nome} cadastrado com sucesso')
+  def cadastrar_placas(self, veiculo):
+    if isinstance(veiculo, Carro):
+      self.placas_carros.append(veiculo.placa)
+      print('carro cadastrado com sucesso')
 
+    elif isinstance(veiculo, Caminhao):
+      self.placas_caminhoes.append(veiculo.placa)
+      print('caminhão cadastrado com sucesso')
+      
     else:
       print('cadastro falho')
