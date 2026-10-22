@@ -27,7 +27,6 @@ class Veiculo(ABC):
   def cadastro_modelo(self):
     pass
   
-  
 class Carro(Veiculo):
     def cadastro_placa(self):
       self.placa = input('digite a placa do carro: ')
