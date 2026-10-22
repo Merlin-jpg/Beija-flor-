@@ -56,6 +56,9 @@ class Motorista:
   def __init__(self):
     self.nome = ''
 
+  def nome(self):
+    self.nome = input('digite seu nome: ')
+
 class CadastrarMotorista:
   def __init__(self):
     self.informacoes = []
