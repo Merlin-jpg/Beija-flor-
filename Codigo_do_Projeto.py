@@ -2,7 +2,7 @@
 from abc import ABC, abstractmethod
 
 class Veiculo(ABC):
-  def __init__(self,placa, modelo):
+  def __init__(self,placa = '', modelo = ''):
     self.__placa = placa
     self.__modelo = modelo
 
@@ -54,11 +54,13 @@ class Caminhao(Veiculo):
 class Motorista:
   def __init__(self):
     self.nome = ''
+    self.cnh = ''
+    self.tipo_veiculo = ''
 
-  def nome(self):
-    self.nome = input('digite seu nome: ')
+  def viagens_
 
-class CadastroGeral(Veiculo):
+  
+  class CadastroGeral(Veiculo):
   def __init__(self):
     self.placas_carros = []
     self.placas_caminhoes = []
@@ -74,3 +76,18 @@ class CadastroGeral(Veiculo):
       
     else:
       print('cadastro falho')
+
+
+#Menu de entrada do código principal
+print('')
+
+#Código principal
+qtde = int(input('Quantas seções quer registrar?'))
+for i in range(qtde):
+  tipo = input('Qual tipo de veículo você maneja? ').lower()
+  if tipo == 'carro':
+    v = Carro('','')
+  else:
+    v = Caminhao()
+  #Viagens
+  v.calcular_custo()
