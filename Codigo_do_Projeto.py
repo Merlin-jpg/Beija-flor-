@@ -2,9 +2,10 @@
 from abc import ABC, abstractmethod
 
 class Veiculo(ABC):
-  def __init__(self,placa):
+  def __init__(self,placa, hora_saida):
     self.__placa = placa
     self.__produto = ""
+    self.__hora_saida = hora_saida
 
   @property
   def placa(self):
@@ -12,22 +13,22 @@ class Veiculo(ABC):
   @property
   def produto(self):
     return self.__produto
-
+  @property
+  def hora_saida(self):
+    return self.__hora_saida
+  @abstractmethod
   @placa.setter
   def placa(self, p):
     self.__placa = p
+    
   @produto.setter
   def produto(self, m):
     self.__produto = m
   
-  @abstractmethod
-  def cadastro_placa(self):
-    pass
-  @abstractmethod
   def cadastro_produto(self):
     pass
   
-class Carro(Veiculo):
+class Carro(Veiculo): #classe carro apartir de veiculo
     def cadastro_placa(self):
       self.placa = input('digite a placa do carro: ')
       
