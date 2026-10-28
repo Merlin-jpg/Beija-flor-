@@ -16,6 +16,7 @@ class Veiculo(ABC):
   @property
   def hora_saida(self):
     return self.__hora_saida
+    
   @abstractmethod
   @placa.setter
   def placa(self, p):
