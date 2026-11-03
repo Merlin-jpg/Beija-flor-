@@ -151,5 +151,17 @@ class CadastroGeral:
     def cadastrar_motorista(self, motorista):
         self.motoristas.append(motorista)
         print(f'-> Motorista {motorista.nome} cadastrado com sucesso!')
+        
+#Criar o sistema de cadastro geral
+sistema = CadastroGeral()
 
+#Criar os objetos
+meu_carrinho = Carro("ABC-123")
+meu_caminhaozinho = Caminhao("XYZ-987")
+motoristinha = motorista("Cholinha")
 
+#Cadastrar os objetos
+sistema.meu_carrinho = 
+print(sistema.placas_carros)
+print(sistema.placas_camihoes)
+print(sistema.motorista)
