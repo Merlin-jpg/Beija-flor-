@@ -1,95 +1,155 @@
-#chamar método de abstração
 from abc import ABC, abstractmethod
+from collections import defaultdict 
+
+class Produto:
+    def __init__(self, nome, data_validade, data_entrega, valor_mercado, quant, marca=""):
+        self.__nome = nome 
+        self.__data_validade = data_validade
+        self.__data_entrega = data_entrega
+        self.__valor = valor_mercado
+        self.__marca = marca 
+        self.__quant = quant
+
+    @property
+    def nome(self):
+        return self.__nome
+
+    @property
+    def data_entrega(self):
+        return self.__data_entrega
+
+    @staticmethod
+    def cadastro_produto(lista_de_produtos): 'isso aqui vai organizar uma lista por data de validade cada produto'
+        produtos_agrupados = defaultdict(list)
+        
+        for produto in lista_de_produtos:
+            produtos_agrupados[produto.nome].append(produto)
+            
+        return {
+            nome: sorted(lista, key=lambda p: p.data_entrega) 
+            for nome, lista in produtos_agrupados.items()
+        }
+
+    def __repr__(self): "isso é pra nomear os produtos que forem intregues"
+        return f"Produto(Nome: {self.__nome}, Entrega: {self.__data_entrega}, Qtd: {self.__quant})"
+
 
 class Veiculo(ABC):
-  def __init__(self,placa, hora_saida):
-    self.__placa = placa
-    self.__produto = ""
-    self.__hora_saida = hora_saida
-
-  @property
-  def placa(self):
-    return self.__placa
-  @property
-  def produto(self):
-    return self.__produto
-  @property
-  def hora_saida(self):
-    return self.__hora_saida
-    
-  @abstractmethod
-  @placa.setter
-  def placa(self, p):
-    self.__placa = p
-    
-  @produto.setter
-  def produto(self, m):
-    self.__produto = m
+    def __init__(self, placa, hora_saida, produto_entregue=None):
+        self.__placa = placa
+        self.__produto = ""
+        self.__hora_saida = hora_saida
+        self.__produto_entregue = []
+        self.__distancia_percorrida = 0
+        self.__abastecido = False
+        
+        if produto_entregue:
+            self.cadastro_produto_entregue(produto_entregue)
   
-  def cadastro_produto(self):
-    pass
-  
-class Carro(Veiculo): #classe carro apartir de veiculo
-    def cadastro_placa(self):
-      self.placa = input('digite a placa do carro: ')
-      
-    def cadastro_produto(self):
-      self.produto = input('digite o produto do carro: ')
+    @property
+    def placa(self):
+        return self.__placa
+        
+    @property
+    def produto(self):
+        return self.__produto
+        
+    @property
+    def hora_saida(self):
+        return self.__hora_saida
+        
+    @property 
+    def produto_entregue(self):
+        return self.__produto_entregue
+        
+    @property
+    def distancia_percorrida(self):
+        return self.__distancia_percorrida
+    
+    @distancia_percorrida.setter
+    def distancia_percorrida(self, km):
+        self.__distancia_percorrida = km
 
-    def calcular_custo(self):
-      custo_medio = 0.55
-      km_percorrido = input('quantos quilômetros você percoreu? ')
-      custo_total = (km_percorrido // custo_medio) * 6.54
+    @placa.setter
+    def placa(self, p):
+        self.__placa = p
+        
+    @produto.setter
+    def produto(self, m):
+        self.__produto = m
+
+    def cadastro_produto_entregue(self, lista_bruta):
+        produtos_organizados = Produto.cadastro_produto(lista_bruta)
+        self.__produto_entregue = produtos_organizados
+        return self.__produto_entregue
+    
+    @abstractmethod 
+    def calcular_consumo(self):
+        pass
+
+
+class Carro(Veiculo):
+    def __init__(self, placa, hora_saida, km_percorrido=0.0, produto_entregue=None):
+        super().__init__(placa, hora_saida, produto_entregue)
+        self.__km_percorrido = km_percorrido
+
+    @property
+    def km_percorrido(self):
+        return self.__km_percorrido
+
+    @km_percorrido.setter
+    def km_percorrido(self, km):
+        self.__km_percorrido = km
+
+    def calcular_consumo(self):
+        # Exemplo de cálculo para carro
+        custo_total = (self.__km_percorrido / 10) * 5.80 # 10km por litro, R$ 5.80 o litro
+        return custo_total
       
 class Caminhao(Veiculo):
-  def cadastro_placa(self):
-    self.placa = input('digite a placa do caminhão: ')
+    def __init__(self, placa, hora_saida, eixos=2, produto_entregue=None):
+        super().__init__(placa, hora_saida, produto_entregue)
+        self.__eixos = eixos
 
-  def cadastro_produto(self):
-    self.produto = input('digite o produto do caminhão: ')
+    def calcular_consumo(self):
+        try:
+            km = float(input('Quantos quilômetros o caminhão percorreu? '))
+        except ValueError:
+            km = 0.0
+            
+        custo_medio_por_km = 1.22
+        custo_total = (km * custo_medio_por_km) * 6.54
+        return custo_total
 
-  def calcular_custo(self):
-    custo_medio = 1.22
-    km_percorrido = input('quantos quilômetros você percoreu? ')
-    custo_total = (km_percorrido // custo_medio) * 6.54
 
 class Motorista:
-  def __init__(self):
-    self.nome = ''
-    self.cnh = ''
-    self.tipo_veiculo = ''
+    def __init__(self, nome, cnh, tipo_veiculo):
+        self.nome = nome
+        self.cnh = cnh
+        self.tipo_veiculo = tipo_veiculo
 
-  def viagens_
-
-  
-  class CadastroGeral(Veiculo):
-  def __init__(self):
-    self.placas_carros = []
-    self.placas_caminhoes = []
-    
-  def cadastrar_placas(self, veiculo):
-    if isinstance(veiculo, Carro):
-      self.placas_carros.append(veiculo.placa)
-      print('carro cadastrado com sucesso')
-
-    elif isinstance(veiculo, Caminhao):
-      self.placas_caminhoes.append(veiculo.placa)
-      print('caminhão cadastrado com sucesso')
-      
-    else:
-      print('cadastro falho')
+    def __repr__(self):
+        return f"Motorista: {self.nome} (CNH: {self.cnh})"
 
 
-#Menu de entrada do código principal
-print('')
+class CadastroGeral:
+    def __init__(self):
+        self.placas_carros = []
+        self.placas_caminhoes = []
+        self.motoristas = []
+        
+    def cadastrar_veiculo(self, veiculo):
+        if isinstance(veiculo, Carro):
+            self.placas_carros.append(veiculo.placa)
+            print('-> Carro cadastrado com sucesso!')
+        elif isinstance(veiculo, Caminhao):
+            self.placas_caminhoes.append(veiculo.placa)
+            print('-> Caminhão cadastrado com sucesso!')
+        else:
+            print('-> Falha no cadastro do veículo.')
 
-#Código principal
-qtde = int(input('Quantas seções quer registrar?'))
-for i in range(qtde):
-  tipo = input('Qual tipo de veículo você maneja? ').lower()
-  if tipo == 'carro':
-    v = Carro('','')
-  else:
-    v = Caminhao()
-  #Viagens
-  v.calcular_custo()
+    def cadastrar_motorista(self, motorista):
+        self.motoristas.append(motorista)
+        print(f'-> Motorista {motorista.nome} cadastrado com sucesso!')
+
+
