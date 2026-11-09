@@ -1,23 +1,31 @@
-from abc import ABC, abstractmethod
-from collections import defaultdict 
+from abc import ABC, abstractmethod # Aqui é a implementaçã ode classes abstratadas no código como
+from collections import defaultdict # Isso serve para a criação de listas de produtos
 
-class Produto:
+class Produto: # Usamos essas classe para criar e guardar informações de produto que forem chegar na empresa
     def __init__(self, nome, data_validade, data_entrega, valor_mercado, quant, marca=""):
-        self.__nome = nome 
-        self.__data_validade = data_validade
-        self.__data_entrega = data_entrega
-        self.__valor = valor_mercado
-        self.__marca = marca 
-        self.__quant = quant
-
+        # Dentre as informações que recebremos dos produtos temos:
+        self.__nome = nome # Seu nome para a identificação e organização da lista 
+        self.__data_validade = data_validade # Támbem obtemos o tempo dos pereciveis, o formato deve ser "DD/MM/AAAA"
+        self.__data_entrega = data_entrega # Aqui usamos a data em que foi entregue para sabermos quanto tempo temos para entregar apartir da comparação com a data de validade , o formato deve ser "DD/MM/AAAA"
+        self.__valor = valor_mercado # Quanto o produto custa no mercado para saber quanto vamos cobrar pela entrega
+        self.__marca = marca # Essa parte é opcional, mas pode ser utilizado para separar ela na lista
+        self.__quant = quant # A quantidade é pra diminuir na lista para que não seja necessário fazer um objeto para cada produto com nome igual
+        
+    # Como as classes são privados então temos que por os propertys para que seja visivel o que está sendo posto em produtos
     @property
     def nome(self):
-        return self.__nome
+        return self.__nome 
 
     @property
     def data_entrega(self):
         return self.__data_entrega
-
+        
+    @property 
+    def data_validade(self):
+        return self.__data_validade
+    @data_validade.setter 
+    def data_validade(self, a):
+        return self.__data_validade = a        
     @staticmethod
     def cadastro_produto(lista_de_produtos): 'isso aqui vai organizar uma lista por data de validade cada produto'
         produtos_agrupados = defaultdict(list)
@@ -151,7 +159,9 @@ class CadastroGeral:
     def cadastrar_motorista(self, motorista):
         self.motoristas.append(motorista)
         print(f'-> Motorista {motorista.nome} cadastrado com sucesso!')
-        
+
+"isso terá alterações após a apresentação então todos depois de terminarmos"
+"de apresentar devemos ir até o lab 1 resolver o que vai ser feito depois disso aqui !!!"
 #Criar o sistema de cadastro geral
 sistema = CadastroGeral()
 
