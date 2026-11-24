@@ -5,9 +5,9 @@ class Produto: # Usamos essas classe para criar e guardar informações de produ
     def __init__(self, nome, data_validade, data_entrega, valor_mercado, quant, marca=""):
 	# Dentre as informações que recebremos dos produtos temos:
         self.__nome = nome # Seu nome para a identificação e organização da lista 
-        self.__data_validade = data validade # Támbem obtemos o tempo dos pereciveis, o formato deve ser "DD/MM/AAAA"
-        self.__data_entrega = data entrega # Aqui usamos a data em que foi entregue para sabermos quanto tempo temos para entregar apartir da comparação com a data de validade , o formato deve ser "DD/MM/AAAA"
-        self.__valor = valor mercado # Quanto o produto custa no mercado para saber quanto vamos cobrar pela entrega
+        self.__data_validade = data_validade # Támbem obtemos o tempo dos pereciveis, o formato deve ser "DD/MM/AAAA"
+        self.__data_entrega = data_entrega # Aqui usamos a data em que foi entregue para sabermos quanto tempo temos para entregar apartir da comparação com a data de validade , o formato deve ser "DD/MM/AAAA"
+        self.__valor = valor_mercado # Quanto o produto custa no mercado para saber quanto vamos cobrar pela entrega
         self.__marca = marca # Essa parte é opcional, mas pode ser utilizado para separar ela na lista
         self.__quant = quant # A quantidade é pra diminuir na lista para que não seja necessário fazer um objeto para cada produto com nome igual
 
