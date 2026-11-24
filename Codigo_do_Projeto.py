@@ -28,7 +28,7 @@ class Produto: # Usamos essas classe para criar e guardar informações de produ
     def data_validade(self, nova_data):
         self.__data_validade = nova_data
 
-    @abstactmethod
+    @abstractmethod
     def cadastro_produto(lista_de_produtos):
         produtos_agrupados = defaultdict(list)
         for produto in lista_de_produtos:
